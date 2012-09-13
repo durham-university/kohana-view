@@ -10,7 +10,7 @@
  * @license     MIT
  */
 class Template_Mustache extends Template {
-	
+
 	/**
 	 * Template directory.
 	 */
@@ -20,7 +20,7 @@ class Template_Mustache extends Template {
 	 * Template_Mustache works with .mustache files
 	 */
 	public static $ext = 'mustache';
-	
+
 	/**
 	 * Partials.
 	 *
@@ -39,7 +39,7 @@ class Template_Mustache extends Template {
 		$template = file_get_contents($this->path());
 		return $this->_stash($template, $view)->render();
 	}
-	
+
 	/**
 	 * Loads a new partial from a path. If the path is empty, the partial will
 	 * be removed.
@@ -57,20 +57,42 @@ class Template_Mustache extends Template {
 		else
 		{
 			$final_path = Kohana::find_file(static::$dir, $path, static::$ext);
-			
+
 			if ($final_path === FALSE)
 			{
 				throw new View_Exception(
 					'The requested view :path could not be found',
 					array(':path' => static::$dir.'/'.$path.'.'.static::$ext));
 			}
-			
-			$this->_partials[$name] = file_get_contents($final_path);
+
+			$this->string_partial($name, file_get_contents($final_path));
 		}
 
 		return $this;
 	}
-	
+
+	/**
+	 * Loads a new partial using the string given. If the string is empty, the partial will
+	 * be removed.
+	 *
+	 * @param   string  partial name
+	 * @param   string  partial string, FALSE to remove the partial
+	 * @return  Kostache
+	 */
+	public function string_partial($name, $partial)
+	{
+		if ($partial === FALSE)
+		{
+			unset($this->_partials[$name]);
+		}
+		else
+		{
+			$this->_partials[$name] = $partial;
+		}
+
+		return $this;
+	}
+
 	/**
 	 * Return a new Mustache for the given template, view, and partials.
 	 *
