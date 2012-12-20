@@ -1,4 +1,3 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-// Load Mustache for PHP
-include Kohana::find_file('vendor', 'mustache.php/Mustache');
+require __DIR__ . '/../../mustache/kohana-view-mustache/Mustache.php';

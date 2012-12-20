@@ -1,9 +1,6 @@
 {
     "name": "durham-university/kohana-view",
     "description": "View/ViewModel/Template triad for Kohana 3.x",
-    "require": {
-        "mustache/mustache": "~2.0.0"
-    },
     "authors": [
         {
             "name": "Luke Morton",
@@ -13,5 +10,21 @@
             "name": "Paul Dixon",
             "email": "paul.dixon@durham.ac.uk"
         }
-    ]
+    ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "mustache/kohana-view-mustache",
+                "version": "1.1.0",
+                "dist": {
+                    "url": "https://github.com/bobthecow/mustache.php/archive/v1.1.0.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "require": {
+        "mustache/kohana-view-mustache": "1.1.0"
+    }
 }
