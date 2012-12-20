@@ -1,0 +1,17 @@
+{
+    "name": "durham-university/kohana-view",
+    "description": "View/ViewModel/Template triad for Kohana 3.x",
+    "require": {
+        "mustache/mustache": "~2.0.0"
+    },
+    "authors": [
+        {
+            "name": "Luke Morton",
+            "email": "lukemorton.designs@gmail.com"
+        },
+        {
+            "name": "Paul Dixon",
+            "email": "paul.dixon@durham.ac.uk"
+        }
+    ]
+}
